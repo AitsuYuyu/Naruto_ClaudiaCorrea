@@ -5,6 +5,29 @@ import java.util.Scanner;
 import com.local.NinjasMissions.ninjasMissionsBuilder;
 
 
+
+
+
+
+
+
+
+// No fui capaz de conectar la base de datos :,v
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class Main {
     /**
      * @param args
