@@ -70,5 +70,30 @@ public class Ninjas {
     }
 
 
+
+    static class NinjasBuilder{
+        private Ninjas ninjas;
+        public NinjasBuilder(){
+            this.ninjas = new Ninjas();
+        }
+        public NinjasBuilder setName(String name){
+            ninjas.name = name;
+            return this;
+        }
+        public NinjasBuilder setRango(String rango){
+        ninjas.rango = rango;
+            return this;
+        }
+        public NinjasBuilder setVillager(String village){
+            ninjas.village = village;
+            return this;
+        }
+        public Ninjas build(){
+            return ninjas;
+
+        }
+
+    }
+
     
 }

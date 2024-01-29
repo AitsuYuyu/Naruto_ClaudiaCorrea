@@ -62,4 +62,29 @@ public class Missions {
             "}";
     }
 
+
+    static class MissionsBuilder{
+        private Missions missionss;
+        public MissionsBuilder(){
+            this.missionss = new Missions();
+        }
+        public MissionsBuilder setDescription(String description){
+            missionss.description = description;
+            return this;
+        }
+        public MissionsBuilder setRango(String rango){
+        missionss.rango = rango;
+            return this;
+        }
+        public MissionsBuilder setReward(String reward){
+            missionss.reward = reward;
+            return this;
+        }
+        public Missions build(){
+            return missionss;
+
+        }
+
+    }
+
 }
