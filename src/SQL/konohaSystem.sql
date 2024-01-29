@@ -1,7 +1,7 @@
 
-CREATE DATABASE konohaSystem;
+CREATE DATABASE Naruto_ClaudiaCorrea;
 
-USE konohaSystem;
+USE Naruto_ClaudiaCorrea;
 
 CREATE TABLE `NinjaMission`(
     `ninjaId` INT NOT NULL,
