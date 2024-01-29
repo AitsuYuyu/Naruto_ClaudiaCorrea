@@ -103,7 +103,7 @@ static class ninjasMissionsBuilder{
     }
 
     public static String getDescription() {
-        throw new UnsupportedOperationException("Unimplemented method 'getDescription'");
+        throw new UnsupportedOperationException("Unimplemented m ethod 'getDescription'");
     }
 
 
