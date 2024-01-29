@@ -95,20 +95,6 @@ public class Main {
             }
            }
            
-            /* 
-            switch (answer) {
-                case 1:
-                System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++");
-                System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++");
-                
-                    break;
-                case 2:
-                break;
-            
-                default:
-                    break;
-            }
-        */
         }catch (Exception e) {
             System.out.println("You have an error!");
         }
