@@ -1,11 +1,11 @@
 -- Inserts from table Ninja
-INSERT INTO Ninja(ninjaId, name, rango, village) VALUES (1, "Naruto Uzumaki", "Hokage", "Konoha");
-INSERT INTO Ninja(ninjaId, name, rango, village) VALUES (2, "Kakashi Hatake", "Sexto Hokage", "Konoha");
-INSERT INTO Ninja(ninjaId, name, rango, village) VALUES (3, "gaara", "kage","Sunagakure");
-INSERT INTO Ninja(ninjaId, name, rango, village) VALUES (4, "Obito Uchiha", "Chūnin", " Hi no Kuni");
-INSERT INTO Ninja(ninjaId, name, rango, village) VALUES (5, "Hinata Hyuga", "Chūnin", "Konoha");
-INSERT INTO Ninja(ninjaId, name, rango, village) VALUES (6, "Tsunade Senju", "kage", "Konoha");
-INSERT INTO Ninja(ninjaId, name, rango, village) VALUES (7, "Shikamaru Nara", "Chūnin", "Konoha");
+INSERT INTO Ninjas(ninjaId, name, rango, village) VALUES (1, "Naruto Uzumaki", "Hokage", "Konoha");
+INSERT INTO Ninjas(ninjaId, name, rango, village) VALUES (2, "Kakashi Hatake", "Sexto Hokage", "Konoha");
+INSERT INTO Ninjas(ninjaId, name, rango, village) VALUES (3, "gaara", "kage","Sunagakure");
+INSERT INTO Ninjas(ninjaId, name, rango, village) VALUES (4, "Obito Uchiha", "Chūnin", " Hi no Kuni");
+INSERT INTO Ninjas(ninjaId, name, rango, village) VALUES (5, "Hinata Hyuga", "Chūnin", "Konoha");
+INSERT INTO Ninjas(ninjaId, name, rango, village) VALUES (6, "Tsunade Senju", "kage", "Konoha");
+INSERT INTO Ninjas(ninjaId, name, rango, village) VALUES (7, "Shikamaru Nara", "Chūnin", "Konoha");
 
 
 -- Inserts from tamble Ability

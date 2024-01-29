@@ -1,7 +1,7 @@
 
-CREATE DATABASE Naruto_ClaudiaCorrea;
+CREATE DATABASE konohaSystem;
 
-USE Naruto_ClaudiaCorrea;
+USE konohaSystem;
 
 CREATE TABLE `NinjaMission`(
     `ninjaId` INT NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE `Ability`(
     `name` VARCHAR(255) NOT NULL,
     `description` VARCHAR(500) NOT NULL
 );
-CREATE TABLE `Ninja`(
+CREATE TABLE `Ninjas`(
     `ninjaId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(255) NOT NULL,
     `rango` VARCHAR(255) NOT NULL,
@@ -27,8 +27,8 @@ CREATE TABLE `Mission`(
     `reward` VARCHAR(255) NOT NULL
 );
 ALTER TABLE
-    `NinjaMission` ADD CONSTRAINT `ninjaMission_ninja_foreign` FOREIGN KEY(`ninjaId`) REFERENCES `Ninja`(`ninjaId`);
+    `NinjaMission` ADD CONSTRAINT `ninjaMission_ninjas_foreign` FOREIGN KEY(`ninjaId`) REFERENCES `Ninjas`(`ninjaId`);
 ALTER TABLE
-    `Ability` ADD CONSTRAINT `ability_ninjaid_foreign` FOREIGN KEY(`ninjaId`) REFERENCES `Ninja`(`ninjaId`);
+    `Ability` ADD CONSTRAINT `ability_ninjaid_foreign` FOREIGN KEY(`ninjaId`) REFERENCES `Ninjas`(`ninjaId`);
 ALTER TABLE
     `NinjaMission` ADD CONSTRAINT `ninjaMission_mission_foreign` FOREIGN KEY(`missionId`) REFERENCES `Mission`(`missionId`);
