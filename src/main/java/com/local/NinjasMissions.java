@@ -3,7 +3,7 @@ public class NinjasMissions {
     private enum Status{complete, failed, progress, estado}
     private String description;
     private Missions missions;
-    private Ninjas nameNinjas;
+    private InterfazNinjas nameNinjas;
     private String startDate;
     private String endDate;
 
@@ -13,7 +13,7 @@ public class NinjasMissions {
     }
 
 
-    public NinjasMissions(String description, Missions missions, Ninjas nameNinjas, String startDate, String endDate, Status estado) {
+    public NinjasMissions(String description, Missions missions, InterfazNinjas nameNinjas, String startDate, String endDate, Status estado) {
         this.description = description;
         this.missions = missions;
         this.nameNinjas = nameNinjas;
@@ -40,11 +40,11 @@ public class NinjasMissions {
         this.missions = missions;
     }
 
-    public Ninjas getNameNinjas() {
+    public InterfazNinjas getNameNinjas() {
         return this.nameNinjas;
     }
 
-    public void setNameNinjas(Ninjas nameNinjas) {
+    public void setNameNinjas(InterfazNinjas nameNinjas) {
         this.nameNinjas = nameNinjas;
     }
 

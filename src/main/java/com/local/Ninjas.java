@@ -1,99 +1,74 @@
 package com.local;
 
+import java.util.ArrayList;
+import java.util.List;
 
-
-public class Ninjas {
+public class Ninjas implements InterfazNinjas {
     private String name;
     private String rango;
     private String village;
-
-
+    private List<Abilitys> abilities;
 
     public Ninjas() {
+        this.abilities = new ArrayList<>();
     }
 
     public Ninjas(String name, String rango, String village) {
         this.name = name;
         this.rango = rango;
         this.village = village;
+        this.abilities = new ArrayList<>();
     }
 
+    @Override
     public String getName() {
         return this.name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public String getRango() {
         return this.rango;
     }
 
+    @Override
     public void setRango(String rango) {
         this.rango = rango;
     }
 
+    @Override
     public String getVillage() {
         return this.village;
     }
 
+    @Override
     public void setVillage(String village) {
         this.village = village;
     }
 
-    public Ninjas name(String name) {
-        setName(name);
-        return this;
-    }
-
-    public Ninjas rango(String rango) {
-        setRango(rango);
-        return this;
-    }
-
-    public Ninjas village(String village) {
-        setVillage(village);
-        return this;
-    }
-
+    // Implementación del nuevo método para obtener habilidades
     @Override
-    public String toString() {
-        return "{" +
-            " name='" + getName() + "'" +
-            ", rango='" + getRango() + "'" +
-            ", village='" + getVillage() + "'" +
-            "}";
-    }
-    public void viewNinjas(){
-        System.out.println("This is the registration information of a ninja: " + name + ", ");
+    public List<Abilitys> getAbilities() {
+        return this.abilities;
     }
 
-
-
-    static class NinjasBuilder{
-        private Ninjas ninjas;
-        public NinjasBuilder(){
-            this.ninjas = new Ninjas();
-        }
-        public NinjasBuilder setName(String name){
-            ninjas.name = name;
-            return this;
-        }
-        public NinjasBuilder setRango(String rango){
-        ninjas.rango = rango;
-            return this;
-        }
-        public NinjasBuilder setVillager(String village){
-            ninjas.village = village;
-            return this;
-        }
-        public Ninjas build(){
-            return ninjas;
-
-        }
-
+    public void addAbility(Abilitys ability) {
+        abilities.add(ability);
+        ability.setName(name); // Establecer la relación inversa
     }
 
-    
+    public void displayNinjaWithAbilities() {
+        System.out.println("Ninja Information:");
+        System.out.println("Name: " + getName());
+        System.out.println("Rank: " + getRango());
+        System.out.println("Village: " + getVillage());
+        System.out.println("Abilities:");
+        for (Abilitys ability : abilities) {
+            System.out.println("- " + ability.getName() + ": " + ability.getDescription());
+        }
+    }
 }
