@@ -7,90 +7,219 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        displayMainMenu();
+    }
+
+    public static void displayMainMenu() {
         System.out.println("                   Welcome to KonohaSystem");
         System.out.println("---------------------------------------------------------------");
         System.out.println("               please, choose some option: ");
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("                  1. Show the ninjas");
-        System.out.println("                   2. Mission status");
-        System.out.println("                  3. Register missions");
-        System.out.println("                    4. Show missions");
-        System.out.println("             ++++ 0. Finish the program ++++");
+        System.out.println("                  1. Ninja Operations");
+        System.out.println("                  2. Mission Operations");
+        System.out.println("                  0. Finish the program");
         System.out.println("--> ");
 
-        // Crear habilidades
-        Abilitys fireball = new Abilitys("Fireball", "Launches a fireball.");
-        Abilitys shadowClone = new Abilitys("Shadow Clone", "Creates shadow clones.");
-
-        // Crear lista de habilidades
-        List<Abilitys> abilitiesList = new ArrayList<>();
-        abilitiesList.add(fireball);
-        abilitiesList.add(shadowClone);
-
-        // Crear un ninja y agregar habilidades
-        Ninjas naruto = new Ninjas("Naruto Uzumaki", "Hokage", "Konoha");
-        naruto.addAbility(fireball);
-        naruto.addAbility(shadowClone);
-
-        // Mostrar información del ninja con habilidades
-        naruto.displayNinjaWithAbilities();
-
         try (Scanner scanner = new Scanner(System.in)) {
-            int answer = scanner.nextInt();
+            int choice = scanner.nextInt();
 
-            while (true) {
-                if (answer == 1) {
-                    System.out.println("The information about the ninja: " + naruto.getName() + ", rank "
-                            + naruto.getRango() + ", and stay on village " + naruto.getVillage());
+            switch (choice) {
+                case 1:
+                    ninjaOperationsMenu();
                     break;
-
-                } else if (answer == 2) {
-                    System.out.println("1. Show status");
-                    System.out.println("2. Show missions available for ninjas");
-                    System.out.println("0. Exit");
-
-                    try (Scanner scanner2 = new Scanner(System.in)) {
-                        int answer2 = scanner.nextInt();
-
-                        while (true) {
-                            if (answer2 == 1) {
-                                System.out.println("Description from Missions: ");
-                                // Implementa la lógica para obtener la descripción de las misiones
-                                break;
-                            } else if (answer2 == 2) {
-                                System.out.println("No missions available.");
-                                break;
-                            } else if (answer2 == 0) {
-                                break;
-                            } else {
-                                System.out.println("You have an error, please check and try again.");
-                                break;
-                            }
-                        }
-                    }
-                } else if (answer == 3) {
-                    System.out.println("You enter to register missions: ");
-                    System.out.println("1. Register");
-                    System.out.println("2. Create");
-                    System.out.println("3. Show missions");
-                    System.out.println("0. Exit");
-
-                    try (Scanner answer3 = new Scanner(System.in)) {
-
-                    } catch (Exception e) {
-                        System.out.println("You have an error in your answer, check it out and try again.");
-                    }
-                } else if (answer == 4) {
-                    System.out.println("Option 4");
+                case 2:
+                    missionOperationsMenu();
                     break;
-                } else if (answer == 0) {
-                    System.out.println("Exit...");
+                case 0:
+                    System.out.println("Exiting...");
                     break;
-                }
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    displayMainMenu();
+                    break;
             }
-
         } catch (Exception e) {
             System.out.println("You have an error!");
+        }
+    }
+
+    public static void ninjaOperationsMenu() {
+        System.out.println("         Ninja Operations Menu");
+        System.out.println("---------------------------------------------------------------");
+        System.out.println("               Please choose an option: ");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("                  1. Show Ninjas");
+        System.out.println("                  2. Add Ninja");
+        System.out.println("                  3. Remove Ninja");
+        System.out.println("                  0. Go Back");
+        System.out.println("--> ");
+
+        try (Scanner scanner = new Scanner(System.in)) {
+            int choice = scanner.nextInt();
+            List<Ninjas> ninjasList = new ArrayList<>();
+
+            switch (choice) {
+                case 1:
+                    displayAllNinjas(ninjasList);
+                    break;
+                case 2:
+                    addNinja(ninjasList);
+                    break;
+                case 3:
+                    removeNinja(ninjasList);
+                    break;
+                case 0:
+                    System.out.println("Going back to the main menu...");
+                    displayMainMenu(); // Return to main menu
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    ninjaOperationsMenu(); // Re-display ninja operaciones de menu para nuevos inputs
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("You have an error!");
+        }
+    }
+
+    public static void displayAllNinjas(List<Ninjas> ninjasList) {
+        if (ninjasList.isEmpty()) {
+            System.out.println("No ninjas to display.");
+            return;
+        }
+        System.out.println("List of Ninjas:");
+        for (Ninjas ninja : ninjasList) {
+            System.out.println(ninja.toString());
+        }
+    }
+
+    public static void addNinja(List<Ninjas> ninjasList) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter ninja name: ");
+            String name = scanner.nextLine();
+            System.out.println("Enter ninja rank: ");
+            String rank = scanner.nextLine();
+            System.out.println("Enter ninja village: ");
+            String village = scanner.nextLine();
+
+            Ninjas ninja = new Ninjas(name, rank, village);
+            ninjasList.add(ninja);
+            System.out.println("Ninja added successfully.");
+        } catch (Exception e) {
+            System.out.println("Error adding ninja.");
+        }
+    }
+
+    public static void removeNinja(List<Ninjas> ninjasList) {
+        if (ninjasList.isEmpty()) {
+            System.out.println("No ninjas to remove.");
+            return;
+        }
+
+        System.out.println("Enter the name of the ninja to remove: ");
+        try (Scanner scanner = new Scanner(System.in)) {
+            String name = scanner.nextLine();
+
+            for (int i = 0; i < ninjasList.size(); i++) {
+                if (ninjasList.get(i).getName().equalsIgnoreCase(name)) {
+                    ninjasList.remove(i);
+                    System.out.println("Ninja removed successfully.");
+                    return;
+                }
+            }
+            System.out.println("Ninja not found.");
+        } catch (Exception e) {
+            System.out.println("Error removing ninja.");
+        }
+    }
+
+    public static void missionOperationsMenu() {
+        System.out.println("         Mission Operations Menu");
+        System.out.println("---------------------------------------------------------------");
+        System.out.println("               Please choose an option: ");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("                  1. Show Missions");
+        System.out.println("                  2. Add Mission");
+        System.out.println("                  3. Remove Mission");
+        System.out.println("                  0. Go Back");
+        System.out.println("--> ");
+
+        try (Scanner scanner = new Scanner(System.in)) {
+            int choice = scanner.nextInt();
+            List<Missions> missionsList = new ArrayList<>();
+
+            switch (choice) {
+                case 1:
+                    displayAllMissions(missionsList);
+                    break;
+                case 2:
+                    addMission(missionsList);
+                    break;
+                case 3:
+                    removeMission(missionsList);
+                    break;
+                case 0:
+                    System.out.println("Going back to the main menu...");
+                    displayMainMenu(); // Return to main menu
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    missionOperationsMenu(); // Re-display mission operations menu for new input
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("You have an error!");
+        }
+    }
+
+    public static void displayAllMissions(List<Missions> missionsList) {
+        if (missionsList.isEmpty()) {
+            System.out.println("No missions to display.");
+            return;
+        }
+        System.out.println("List of Missions:");
+        for (Missions mission : missionsList) {
+            System.out.println(mission.toString());
+        }
+    }
+
+    public static void addMission(List<Missions> missionsList) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter mission description: ");
+            String description = scanner.nextLine();
+            System.out.println("Enter mission rank: ");
+            String rank = scanner.nextLine();
+            System.out.println("Enter mission reward: ");
+            String reward = scanner.nextLine();
+
+            Missions mission = new Missions(description, rank, reward);
+            missionsList.add(mission);
+            System.out.println("Mission added successfully.");
+        } catch (Exception e) {
+            System.out.println("Error adding mission.");
+        }
+    }
+
+    public static void removeMission(List<Missions> missionsList) {
+        if (missionsList.isEmpty()) {
+            System.out.println("No missions to remove.");
+            return;
+        }
+
+        System.out.println("Enter the description of the mission to remove: ");
+        try (Scanner scanner = new Scanner(System.in)) {
+            String description = scanner.nextLine();
+
+            for (int i = 0; i < missionsList.size(); i++) {
+                if (missionsList.get(i).getDescription().equalsIgnoreCase(description)) {
+                    missionsList.remove(i);
+                    System.out.println("Mission removed successfully.");
+                    return;
+                }
+            }
+            System.out.println("Mission not found.");
+        } catch (Exception e) {
+            System.out.println("Error removing mission.");
         }
     }
 }
