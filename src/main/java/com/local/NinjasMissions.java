@@ -1,17 +1,16 @@
 package com.local;
+
 public class NinjasMissions {
-    private enum Status{complete, failed, progress, estado}
+    private enum Status {COMPLETE, FAILED, PROGRESS}
+
     private String description;
     private Missions missions;
     private InterfazNinjas nameNinjas;
     private String startDate;
     private String endDate;
+    private Status estado;
 
-
-    public NinjasMissions(){
-
-    }
-
+    public NinjasMissions() {}
 
     public NinjasMissions(String description, Missions missions, InterfazNinjas nameNinjas, String startDate, String endDate, Status estado) {
         this.description = description;
@@ -21,8 +20,6 @@ public class NinjasMissions {
         this.endDate = endDate;
         this.estado = estado;
     }
-
-
 
     public String getDescription() {
         return this.description;
@@ -71,8 +68,6 @@ public class NinjasMissions {
     public void setEstado(Status estado) {
         this.estado = estado;
     }
-
-
     @Override
     public String toString() {
         return "{" +
@@ -84,28 +79,4 @@ public class NinjasMissions {
             ", estado='" + getEstado() + "'" +
             "}";
     }
-
-Status  estado = Status.estado;
-static class ninjasMissionsBuilder{
-    private NinjasMissions ninjasMissions;
-
-    public ninjasMissionsBuilder(){
-        this.ninjasMissions =  new NinjasMissions();
-    }
-    
-    public ninjasMissionsBuilder setDescription ( String description){
-        ninjasMissions.description = description;
-        return this;
-    }
-    public ninjasMissionsBuilder setStatus(Missions missions){
-        ninjasMissions.missions = missions;
-        return this;
-    }
-
-    public static String getDescription() {
-        throw new UnsupportedOperationException("Unimplemented m ethod 'getDescription'");
-    }
-
-
-
-}}
+}

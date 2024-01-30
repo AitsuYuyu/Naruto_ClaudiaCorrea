@@ -1,9 +1,12 @@
 package com.local;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Missions {
     private String description;
     private String rango;
     private String reward;
-
 
     public Missions() {
     }
@@ -38,21 +41,6 @@ public class Missions {
         this.reward = reward;
     }
 
-    public Missions description(String description) {
-        setDescription(description);
-        return this;
-    }
-
-    public Missions rango(String rango) {
-        setRango(rango);
-        return this;
-    }
-
-    public Missions reward(String reward) {
-        setReward(reward);
-        return this;
-    }
-
     @Override
     public String toString() {
         return "{" +
@@ -62,29 +50,49 @@ public class Missions {
             "}";
     }
 
+    // CRUD Operations
 
-    static class MissionsBuilder{
-        private Missions missionss;
-        public MissionsBuilder(){
-            this.missionss = new Missions();
-        }
-        public MissionsBuilder setDescription(String description){
-            missionss.description = description;
-            return this;
-        }
-        public MissionsBuilder setRango(String rango){
-        missionss.rango = rango;
-            return this;
-        }
-        public MissionsBuilder setReward(String reward){
-            missionss.reward = reward;
-            return this;
-        }
-        public Missions build(){
-            return missionss;
-
-        }
-
+    // Create
+    public static void createMission(String description, String rango, String reward, List<Missions> missionsList) {
+        missionsList.add(new Missions(description, rango, reward));
+        System.out.println("Mission created successfully.");
     }
 
+    // Read
+    public static void displayAllMissions(List<Missions> missionsList) {
+        if (missionsList.isEmpty()) {
+            System.out.println("No missions to display.");
+            return;
+        }
+        System.out.println("List of Missions:");
+        for (Missions mission : missionsList) {
+            System.out.println(mission.toString());
+        }
+    }
+
+    // Update
+    public static void updateMission(String description, String newDescription, String newRango, String newReward, List<Missions> missionsList) {
+        for (Missions mission : missionsList) {
+            if (mission.getDescription().equalsIgnoreCase(description)) {
+                mission.setDescription(newDescription);
+                mission.setRango(newRango);
+                mission.setReward(newReward);
+                System.out.println("Mission updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Mission not found.");
+    }
+
+    // Delete
+    public static void deleteMission(String description, List<Missions> missionsList) {
+        for (int i = 0; i < missionsList.size(); i++) {
+            if (missionsList.get(i).getDescription().equalsIgnoreCase(description)) {
+                missionsList.remove(i);
+                System.out.println("Mission deleted successfully.");
+                return;
+            }
+        }
+        System.out.println("Mission not found.");
+    }
 }
